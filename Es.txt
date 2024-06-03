@@ -1,0 +1,25 @@
+Es1
+SELECT * FROM clienti WHERE nome = 'Mario'
+
+Es2
+SELECT nome, cognome FROM clienti WHERE EXTRACT(YEAR FROM anno_di_nascita) = 1982
+
+Es3
+SELECT numero_fattura from fatture where iva = 20
+
+Es4
+SELECT * FROM prodotti WHERE EXTRACT(YEAR FROM data_attivazione) = 2017 AND (in_produzione = true OR in_commercio = true)
+
+Es5
+SELECT * FROM fatture JOIN clienti ON fatture.id_cliente = clienti.numero_cliente WHERE importo < 1000
+
+Es6
+SELECT fatt.numero_fattura, fatt.importo, fatt.iva, fatt.data_fattura, forn.denominazione FROM fatture fatt JOIN fornitori forn ON fatt.numero_fornitore = forn.numero_fornitore
+
+Es7
+SELECT EXTRACT (YEAR FROM data_fattura) anno , COUNT(*) FROM fatture where iva = 20 GROUP BY anno
+
+Es8
+SELECT EXTRACT (YEAR FROM data_fattura) anno , COUNT(*), SUM(importo) FROM fatture GROUP BY anno
+
+
