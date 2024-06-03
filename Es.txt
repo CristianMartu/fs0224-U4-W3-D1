@@ -22,9 +22,11 @@ SELECT EXTRACT (YEAR FROM data_fattura) anno , COUNT(*) FROM fatture where iva =
 Es8
 SELECT EXTRACT (YEAR FROM data_fattura) anno , COUNT(*), SUM(importo) FROM fatture GROUP BY anno
 
-
 Extra1
 SELECT EXTRACT (YEAR FROM data_fattura) anno FROM fatture  WHERE tipologia = 'A' GROUP BY anno HAVING COUNT(*) >= 2
 
 Extra2
 SELECT SUM(f.importo), cli.regione_residenza from fatture f JOIN clienti cli ON f.id_cliente = cli.numero_cliente GROUP BY cli.regione_residenza
+
+Extra3
+SELECT COUNT(*) FROM clienti JOIN fatture ON clienti.numero_cliente = fatture.id_cliente WHERE EXTRACT(YEAR FROM anno_di_nascita) = 1980 and importo > 50
